@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pixelate
+  m_Shader: {fileID: -6465566751694194690, guid: 3453cf39b9448ad4b84f5483cb6bb487, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_222E68FB: 0
+    - Vector1_3CF62773: 2
+    - Vector1_3ECB5A09: 0.96
+    - Vector1_410611D2: 0.0154
+    - Vector1_4635E3A0: 9.8
+    - Vector1_6F1C8E92: 0
+    - Vector1_78744EA8: 1.81
+    - Vector1_A882FB8: 2000
+    - Vector1_D97357A7: 40
+    - Vector1_E126C040: 0.0602
+    - Vector1_E36979B2: 40
+    - Vector1_E4F6CDBA: 1
+    - Vector1_F49D5CAA: 0.149
+    - Vector1_F69DFB68: 0.35
+    m_Colors:
+    - Render_Scale: {r: 0.3, g: 0.3, b: 0, a: 0}
+    - Vector2_72410530: {r: 0.29, g: -0.3, b: 0, a: 0}
+    - Vector2_7CA2F58F: {r: 204.73, g: 119.82, b: 0, a: 0}
+  m_BuildTextureStacks: []
