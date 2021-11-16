@@ -47,8 +47,9 @@ Material:
     - Vector1_E4F6CDBA: 1
     - Vector1_F49D5CAA: 0.149
     - Vector1_F69DFB68: 0.35
+    - power: 2.9
     m_Colors:
-    - Render_Scale: {r: 0.3, g: 0.3, b: 0, a: 0}
+    - Render_Scale: {r: 0.4, g: 0.4, b: 0, a: 0}
     - Vector2_72410530: {r: 0.29, g: -0.3, b: 0, a: 0}
     - Vector2_7CA2F58F: {r: 204.73, g: 119.82, b: 0, a: 0}
   m_BuildTextureStacks: []
