@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public bool allowInput = true;
+    public int moves;
     
     [SerializeField] private float speed;
     [SerializeField] private BoxCollider[] boxColliders;
@@ -12,29 +14,54 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode[] key;
     [SerializeField] private Text movesText;
     [SerializeField] private TurnBased turnBased;
+    [SerializeField] private CheckWin checkWin;
+    [SerializeField] private GameObject retryUI;
+    [SerializeField] private PlayerController otherController;
+    
 
-    private int moves;
     private bool moving;
     private float angle = 90f;
     private Rigidbody rb;
     private int lastDirection = -1;
-
+    private bool triggeredObjective;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
         movesText.transform.GetChild(0).gameObject.SetActive(allowInput);
         
         if (!moving)
-        {
             ReadInput();
-            return;
-        }
-        
+    }
+
+    private void FixedUpdate()
+    {
+        if (!moving) return;
         rb.velocity = transform.right * speed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Win"))
+        {
+            if (!triggeredObjective)
+            {
+                triggeredObjective = true;
+                checkWin.ballsStatus++;
+                checkWin.CheckStatus();
+                if (checkWin.ballsStatus == 1)
+                    checkWin.checkBallStatus++;
+                print(checkWin.checkBallStatus);
+            }
+
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -42,8 +69,19 @@ public class PlayerController : MonoBehaviour
         moving = false;
         rb.velocity = Vector3.zero;
         other.transform.GetComponent<BoxCollider>().enabled = false;
+        if (checkWin.checkBallStatus == 2 && checkWin.ballsStatus == 1)
+            RetryLevel();
+        if (checkWin.checkBallStatus == 1 && checkWin.ballsStatus == 1)
+            checkWin.checkBallStatus++;
     }
 
+    private void RetryLevel()
+    {
+        retryUI.SetActive(true);
+        enabled = false;
+        otherController.enabled = false;
+    }
+    
     private void ReadInput()
     {
         if (allowInput)
