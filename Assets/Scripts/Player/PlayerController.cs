@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        movesText.transform.GetChild(0).gameObject.SetActive(allowInput);
+        
         if (!moving)
         {
             ReadInput();

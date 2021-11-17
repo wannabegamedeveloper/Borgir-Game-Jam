@@ -12,6 +12,5 @@ public class TurnBased : MonoBehaviour
                 player.allowInput = true;
         
         playerController.allowInput = false;
-        print(playerController.allowInput);
     }
 }
