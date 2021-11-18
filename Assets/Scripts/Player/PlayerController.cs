@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CheckWin checkWin;
     [SerializeField] private GameObject retryUI;
     [SerializeField] private PlayerController otherController;
-    
 
     private bool moving;
     private float angle = 90f;
@@ -58,9 +57,11 @@ public class PlayerController : MonoBehaviour
                 checkWin.CheckStatus();
                 if (checkWin.ballsStatus == 1)
                     checkWin.checkBallStatus++;
-                print(checkWin.checkBallStatus);
             }
-
+        }
+        else if (other.CompareTag("Button"))
+        {
+            other.GetComponent<ButtonController>().ButtonPressed();
         }
     }
 
