@@ -1200,6 +1200,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 74530665}
     - target: {fileID: 791771278065753014, guid: f85de8694398b304d92d731d22606f9a, type: 3}
+      propertyPath: retryLevel
+      value: 
+      objectReference: {fileID: 4285726182262067121}
+    - target: {fileID: 791771278065753014, guid: f85de8694398b304d92d731d22606f9a, type: 3}
       propertyPath: playerController.Array.data[0]
       value: 
       objectReference: {fileID: 1542541230}

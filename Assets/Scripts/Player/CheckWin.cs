@@ -7,6 +7,8 @@ public class CheckWin : MonoBehaviour
 
     [SerializeField] private PlayerController[] playerController;
     [SerializeField] private GameObject ui;
+    [SerializeField] private GameObject retryLevel;
+    
     
     public void CheckStatus()
     {
@@ -14,6 +16,7 @@ public class CheckWin : MonoBehaviour
         if (ballsStatus == 2 && playerController[0].moves == playerController[1].moves)
         {
             ui.SetActive(true);
+            retryLevel.SetActive(false);
             foreach (PlayerController controller in playerController)
                 controller.enabled = false;
         }
