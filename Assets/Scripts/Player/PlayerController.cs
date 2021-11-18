@@ -110,19 +110,16 @@ public class PlayerController : MonoBehaviour
 
     private void RotateToDirection(int direction)
     {
-        if (lastDirection == -1 || lastDirection != direction)
-        {
-            turnBased.ChangeTurn(this);
-            moves++;
-            movesText.text = moves.ToString();
-            lastDirection = direction;
-            moving = true;
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * direction));
-            foreach (var boxCollider in boxColliders)
-                boxCollider.transform.GetComponent<BoxCollider>().enabled = true;
-        }
+        turnBased.ChangeTurn(this);
+        moves++;
+        movesText.text = moves.ToString();
+        lastDirection = direction;
+        moving = true;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * direction));
+        foreach (var boxCollider in boxColliders)
+            boxCollider.transform.GetComponent<BoxCollider>().enabled = true;
     }
-    
+
     private enum Directions
     {
         Right = 0,

@@ -20,5 +20,7 @@ public class CheckWin : MonoBehaviour
             foreach (PlayerController controller in playerController)
                 controller.enabled = false;
         }
+        else if (ballsStatus == 2 && playerController[0].moves != playerController[1].moves)
+            retryLevel.SetActive(true);
     }
 }

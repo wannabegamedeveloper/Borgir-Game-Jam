@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2905414975462661325}
   - component: {fileID: 2905414975462661324}
   - component: {fileID: 2905414975462661327}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Win Blue
   m_TagString: Win
   m_Icon: {fileID: 0}
