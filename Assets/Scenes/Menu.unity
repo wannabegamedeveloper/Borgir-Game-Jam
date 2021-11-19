@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5507298, g: 0.8125828, b: 0.9811321, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.56225526, g: 0.87160766, b: 0.8962264, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.6462264, b: 0.6462264, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -701,6 +701,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1437868049 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3296084656192235396, guid: 63375905829ff2244b2b2a6cd8a32993, type: 3}
+  m_PrefabInstance: {fileID: 3296084657040277750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1617564088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1193,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6053354399695921409}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6053354400260530724}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6053354399695921409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,7 +1328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.6462264, b: 0.6462264, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1429,6 +1446,7 @@ GameObject:
   - component: {fileID: 6053354400260530726}
   - component: {fileID: 6053354400260530721}
   - component: {fileID: 6053354400260530720}
+  - component: {fileID: 6053354400260530724}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1436,6 +1454,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6053354400260530724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053354400260530723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b60e8305a89a374d838aa0368a9bbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 1437868049}
 --- !u!223 &6053354400260530726
 Canvas:
   m_ObjectHideFlags: 0

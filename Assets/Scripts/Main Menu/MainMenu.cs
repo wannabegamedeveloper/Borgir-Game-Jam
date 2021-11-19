@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Animator fadeImage;
+    
+    public void Play()
     {
-        
+        fadeImage.Play("Fade Out", -1, 0f);
+        StartCoroutine(Delay());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Quit()
     {
-        
+        Application.Quit();
+    }
+    
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(1);
     }
 }
