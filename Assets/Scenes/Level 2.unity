@@ -1025,6 +1025,7 @@ Transform:
   - {fileID: 1189911439}
   - {fileID: 702554441}
   - {fileID: 518999285}
+  - {fileID: 1500246182}
   m_Father: {fileID: 543450653213506614}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1094,6 +1095,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1500246181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1500246182}
+  - component: {fileID: 1500246183}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1500246182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500246181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00938, y: 0, z: 0.168}
+  m_LocalScale: {x: 0.020066757, y: 0.08827701, z: 0.021760298}
+  m_Children: []
+  m_Father: {fileID: 1393722945}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1500246183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500246181}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.522931, y: 1, z: 1}
+  m_Center: {x: 0.23853423, y: 0, z: 0}
 --- !u!114 &1542541230 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7407894959762678265, guid: c69896e1138b3a44786583b74d61f7ee, type: 3}
@@ -1400,8 +1445,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.522931, y: 1, z: 1}
+  m_Center: {x: 0.23853423, y: 0, z: 0}
 --- !u!114 &2044076742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4482049291707079861, guid: 4cf8cf0d2f2b60940a787696ffb9f954, type: 3}
@@ -1878,7 +1923,7 @@ PrefabInstance:
       objectReference: {fileID: 1542541230}
     - target: {fileID: 4173913377452073495, guid: 32a2d160bed432546baeeab149532294, type: 3}
       propertyPath: boxColliders.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4173913377452073495, guid: 32a2d160bed432546baeeab149532294, type: 3}
       propertyPath: boxColliders.Array.data[0]
@@ -1915,7 +1960,7 @@ PrefabInstance:
     - target: {fileID: 4173913377452073495, guid: 32a2d160bed432546baeeab149532294, type: 3}
       propertyPath: boxColliders.Array.data[8]
       value: 
-      objectReference: {fileID: 518999286}
+      objectReference: {fileID: 1500246183}
     - target: {fileID: 4173913377452073495, guid: 32a2d160bed432546baeeab149532294, type: 3}
       propertyPath: boxColliders.Array.data[9]
       value: 
@@ -2206,7 +2251,7 @@ PrefabInstance:
       objectReference: {fileID: 791472660}
     - target: {fileID: 7407894959762678265, guid: c69896e1138b3a44786583b74d61f7ee, type: 3}
       propertyPath: boxColliders.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7407894959762678265, guid: c69896e1138b3a44786583b74d61f7ee, type: 3}
       propertyPath: boxColliders.Array.data[0]
@@ -2243,7 +2288,7 @@ PrefabInstance:
     - target: {fileID: 7407894959762678265, guid: c69896e1138b3a44786583b74d61f7ee, type: 3}
       propertyPath: boxColliders.Array.data[8]
       value: 
-      objectReference: {fileID: 518999286}
+      objectReference: {fileID: 1500246183}
     - target: {fileID: 7407894959762678265, guid: c69896e1138b3a44786583b74d61f7ee, type: 3}
       propertyPath: boxColliders.Array.data[9]
       value: 
