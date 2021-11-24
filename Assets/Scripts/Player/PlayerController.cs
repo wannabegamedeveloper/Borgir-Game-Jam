@@ -1,13 +1,16 @@
-using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
     public bool allowInput = true;
     public int moves;
-    
+   
     [SerializeField] private float speed;
     [SerializeField] private BoxCollider[] boxColliders;
     [SerializeField] private float rayDistance;
@@ -17,23 +20,55 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CheckWin checkWin;
     [SerializeField] private GameObject retryUI;
     [SerializeField] private PlayerController otherController;
-
+    [SerializeField] private Ball ballType;
+    
+    
+    private InputActions inputActions;
     private bool moving;
     private float angle = 90f;
     private Rigidbody rb;
-    private int lastDirection = -1;
     private bool triggeredObjective;
-    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (ballType == Ball.Blue)
+            inputActions.BlueController.Move.performed += Move;
+        else
+            inputActions.PinkController.Move.performed += Move;
+
+        inputActions.ExtraInputs.Restart.performed += RestartGame;
+    }
+
+    private void Move(InputAction.CallbackContext context)
+    {
+        if (allowInput && !moving)
+            RotateToDirection(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y);
+    }
+    
+    private void Awake()
+    {
+        inputActions = new InputActions();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+    
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
+    private void RestartGame(InputAction.CallbackContext callbackContext)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
         movesText.transform.GetChild(0).gameObject.SetActive(allowInput);
         
         if (!moving)
@@ -97,27 +132,35 @@ public class PlayerController : MonoBehaviour
     {
         if (allowInput)
         {
-            if (Input.GetKeyDown(key[0]) && !Physics.Raycast(transform.position, Vector3.right, rayDistance))
-                RotateToDirection((int) Directions.Right);
-            else if (Input.GetKeyDown(key[1]) && !Physics.Raycast(transform.position, Vector3.left, rayDistance))
-                RotateToDirection((int) Directions.Left);
-            else if (Input.GetKeyDown(key[2]) && !Physics.Raycast(transform.position, Vector3.up, rayDistance))
-                RotateToDirection((int) Directions.Up);
-            else if (Input.GetKeyDown(key[3]) && !Physics.Raycast(transform.position, Vector3.down, rayDistance))
-                RotateToDirection((int) Directions.Down);
+            // if (Input.GetKeyDown(key[0]) && !Physics.Raycast(transform.position, Vector3.right, rayDistance))
+            //     RotateToDirection((int) Directions.Right);
+            // else if (Input.GetKeyDown(key[1]) && !Physics.Raycast(transform.position, Vector3.left, rayDistance))
+            //     RotateToDirection((int) Directions.Left);
+            // else if (Input.GetKeyDown(key[2]) && !Physics.Raycast(transform.position, Vector3.up, rayDistance))
+            //     RotateToDirection((int) Directions.Up);
+            // else if (Input.GetKeyDown(key[3]) && !Physics.Raycast(transform.position, Vector3.down, rayDistance))
+            //     RotateToDirection((int) Directions.Down);
         }
     }
 
-    private void RotateToDirection(int direction)
+    private void RotateToDirection(float x, float y)
     {
-        turnBased.ChangeTurn(this);
-        moves++;
-        movesText.text = moves.ToString();
-        lastDirection = direction;
-        moving = true;
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle * direction));
-        foreach (var boxCollider in boxColliders)
-            boxCollider.transform.GetComponent<BoxCollider>().enabled = true;
+        Vector3 position = transform.position;
+        bool hasReachedEdgeX = Physics.Raycast(position, new Vector3(x, 0f, 0f), rayDistance);
+        bool hasReachedEdgeY = Physics.Raycast(position, new Vector3(0f, y, 0f), rayDistance);
+
+        print(x);
+        
+        if (!hasReachedEdgeX && !hasReachedEdgeY)
+        {
+            turnBased.ChangeTurn(this);
+            moves++;
+            movesText.text = moves.ToString();
+            moving = true;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, angle * (x - 1f), angle * y));
+            foreach (var boxCollider in boxColliders)
+                boxCollider.transform.GetComponent<BoxCollider>().enabled = true;
+        }
     }
 
     private enum Directions
@@ -126,5 +169,11 @@ public class PlayerController : MonoBehaviour
         Left = 2,
         Up = 1,
         Down = 3
+    }
+
+    private enum Ball
+    {
+        Pink = 1,
+        Blue = 2
     }
 }
