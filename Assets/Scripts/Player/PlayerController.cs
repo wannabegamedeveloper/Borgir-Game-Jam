@@ -94,20 +94,6 @@ public class PlayerController : MonoBehaviour
                     checkWin.checkBallStatus++;
             }
         }
-        else if (other.CompareTag("Button"))
-        {
-            other.GetComponent<ButtonController>().ButtonPressed();
-            other.GetComponent<MeshRenderer>().enabled = false;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Button"))
-        {
-            other.GetComponent<MeshRenderer>().enabled = true;
-            other.GetComponent<ButtonController>().ButtonLeft();
-        }
     }
 
     private void OnCollisionEnter(Collision other)

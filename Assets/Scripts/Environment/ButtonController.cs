@@ -7,19 +7,23 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private Transform newPos;
 
     private Vector3 oldPosition;
-
+    
     private void Start()
     {
         oldPosition = gate.transform.position;
+        ButtonActionHandler.OnButtonPressed += ButtonPressed;
+        ButtonActionHandler.OnButtonLeft += ButtonLeft;
     }
 
-    public void ButtonPressed()
+    private void ButtonPressed(Transform other, ButtonController otherController)
     {
-        LeanTween.move(gate, newPos.position, 10f * Time.deltaTime);
+        LeanTween.move(otherController.gate, otherController.newPos.position, 10f * Time.deltaTime);
+        other.GetComponent<MeshRenderer>().enabled = false;
     }
 
-    public void ButtonLeft()
+    private void ButtonLeft(Transform other, ButtonController otherController)
     {
-        LeanTween.move(gate, oldPosition, 10f * Time.deltaTime);
+        LeanTween.move(otherController.gate, otherController.oldPosition, 10f * Time.deltaTime);
+        other.GetComponent<MeshRenderer>().enabled = true;
     }
 }
